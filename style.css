@@ -57,6 +57,7 @@ body{
   border-bottom-right-radius: 10px;
   margin-left: -2.6rem;
   cursor: pointer;
+  border: none;
 }
 .details{
   width: 70vw;
@@ -66,14 +67,26 @@ body{
   text-transform: uppercase;
   font-weight: 500;
   font-size: .9rem;
+  padding: 0 1rem 0 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  text-align: center;
   border-radius: 10px;
   position: absolute;
   top: 9rem;
   z-index: 9999 !important;
 }
+
+.ip, .loc, .timezone, .isp{
+  display: flex;
+  flex-direction: column;
+}
+.ip p, .loc p, .timezone p, .isp p{
+  color: black;
+  font-size: 1.2rem;
+}
+
 #mapid{
   height: 70vh;
   width: 100vw;
