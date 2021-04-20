@@ -1,18 +1,56 @@
 const mapClass = document.getElementById("mapid");
+const main = document.querySelector(".main");
+const ipInput = document.querySelector(".ip-input");
+const btn = document.querySelector(".sub-icon");
+const ipShow = document.querySelector(".ip-show");
+const locShow = document.querySelector(".loc-show");
+const timeZone = document.querySelector(".timezone-show");
+const isp = document.querySelector(".isp-show");
 
-let myMap = L.map("mapid").setView([35.6892, 51.3890], 13);
+// Geo Ipify
+const request = function (ip) {
+  fetch(
+    `https://geo.ipify.org/api/v1?apiKey=at_jfzVglKZxDJo0ygklGldIX9L60dRZ&domain=${ip}`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (res) {
+      // Save the lat and lng for map coordinates
 
-L.tileLayer(
-  "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
-  {
-    attribution:
-      'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: "mapbox/streets-v11",
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken:
-      "pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
-  }
-).addTo(myMap);
-const marker = L.marker([35.6892, 51.3890]).addTo(myMap);
+      const lat = res.location.lat;
+      const lng = res.location.lng;
+      ipShow.innerHTML = res.ip;
+      locShow.innerHTML = res.location.country;
+      timeZone.innerHTML = res.location.timezone;
+      isp.innerHTML = res.as.name;
+      let coords = [lat, lng];
+
+      // Re Render the map container
+      main.innerHTML = "<div id='mapid'></div>";
+
+      // Leaflet map
+      let myMap = L.map("mapid").setView(coords, 13);
+
+      L.tileLayer(
+        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
+        {
+          attribution:
+            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: "mapbox/streets-v11",
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken:
+            "pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
+        }
+      ).addTo(myMap);
+      L.marker(coords).addTo(myMap);
+    });
+};
+
+request("156.242.144.79");
+
+btn.addEventListener("click", function () {
+  request(ipInput.value);
+});
