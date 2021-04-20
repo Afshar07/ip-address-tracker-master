@@ -22,7 +22,7 @@ const request = function (ip) {
       const lng = res.location.lng;
       ipShow.innerHTML = res.ip;
       locShow.innerHTML = res.location.country;
-      timeZone.innerHTML = res.location.timezone;
+      timeZone.innerHTML = res.location.timezone + " GMT";
       isp.innerHTML = res.as.name;
       let coords = [lat, lng];
 
