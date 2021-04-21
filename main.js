@@ -11,6 +11,8 @@ const isp = document.querySelector(".isp-show");
 const blackIcon = L.icon({
   iconUrl: "images/icon-location.svg",
   iconSize: [38, 50], // size of the icon
+  iconAnchor:   [22, 49], // point of the icon which will correspond to marker's location
+
 });
 
 // Geo Ipify
