@@ -7,6 +7,7 @@ const locShow = document.querySelector(".loc-show");
 const timeZone = document.querySelector(".timezone-show");
 const isp = document.querySelector(".isp-show");
 
+// Changing the marker
 const blackIcon = L.icon({
   iconUrl: "images/icon-location.svg",
   iconSize: [38, 50], // size of the icon
@@ -36,16 +37,9 @@ const request = function (ip) {
       mapRender(coords);
     });
 };
-// Default address for start
-request("192.212.174.101");
-
-btn.addEventListener("click", function () {
-  request(ipInput.value);
-});
 
 // Map Render Function
 const mapRender = function (coordinates) {
-  // Leaflet map
   let myMap = L.map("mapid").setView(coordinates, 13);
 
   L.tileLayer(
@@ -63,3 +57,10 @@ const mapRender = function (coordinates) {
   ).addTo(myMap);
   L.marker(coordinates, { icon: blackIcon }).addTo(myMap);
 };
+
+// Default address for start
+request("192.212.174.101");
+
+btn.addEventListener("click", function () {
+  request(ipInput.value);
+});
