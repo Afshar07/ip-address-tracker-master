@@ -49,7 +49,7 @@ const request = function (ip) {
     });
 };
 
-request("156.242.144.79");
+request("192.212.174.101");
 
 btn.addEventListener("click", function () {
   request(ipInput.value);
