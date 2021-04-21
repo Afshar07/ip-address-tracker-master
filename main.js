@@ -8,7 +8,7 @@ const timeZone = document.querySelector(".timezone-show");
 const isp = document.querySelector(".isp-show");
 
 const blackIcon = L.icon({
-  iconUrl: "images/icon-location.svg", 
+  iconUrl: "images/icon-location.svg",
   iconSize: [38, 50], // size of the icon
 });
 
@@ -33,29 +33,33 @@ const request = function (ip) {
 
       // Re Render the map container
       main.innerHTML = "<div id='mapid'></div>";
-
-      // Leaflet map
-      let myMap = L.map("mapid").setView(coords, 13);
-
-      L.tileLayer(
-        "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
-        {
-          attribution:
-            'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: "mapbox/streets-v11",
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken:
-            "pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
-        }
-      ).addTo(myMap);
-      L.marker(coords, {icon:blackIcon}).addTo(myMap);
+      mapRender(coords);
     });
 };
-
+// Default address for start
 request("192.212.174.101");
 
 btn.addEventListener("click", function () {
   request(ipInput.value);
 });
+
+// Map Render Function
+const mapRender = function (coordinates) {
+  // Leaflet map
+  let myMap = L.map("mapid").setView(coordinates, 13);
+
+  L.tileLayer(
+    "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
+    {
+      attribution:
+        'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: "mapbox/streets-v11",
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken:
+        "pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
+    }
+  ).addTo(myMap);
+  L.marker(coordinates, { icon: blackIcon }).addTo(myMap);
+};
