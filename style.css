@@ -1,103 +1,178 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 
 /* CSS Reset */
-html{
+html {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
-body{
+body {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: "Rubik", sans-serif;
 }
-
-.header{
-  padding: 0;
-  margin: 0;
-  height: 30vh;
-  background-image: url(images/pattern-bg.png);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-.header h1{
+@media only screen and (min-width: 550px) {
+  .header {
+    padding: 0;
+    margin: 0;
+    height: 30vh;
+    background-image: url(images/pattern-bg.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  .header h1 {
     font-weight: 400;
     position: relative;
-}
-.ip-input{
-  width: 30vw;
-  height: 6vh;
-  padding-left: 1rem;
-  border-radius: 10px;
-  border: none;
-  padding-right: 3rem;
-}
-.ip-input:focus{
-  outline: none;
-}
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.sub-icon{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.6rem;
-  height: 6.5vh;
-  background-color: black;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  margin-left: -2.6rem;
-  cursor: pointer;
-  border: none;
-}
-.details{
-  width: 70vw;
-  height: 7rem;
-  background-color: white;
-  color: gray;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: .9rem;
-  padding: 0 1rem 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  border-radius: 10px;
-  position: absolute;
-  top: 9rem;
-  z-index: 9999 !important;
-}
+  }
+  .ip-input {
+    width: 30vw;
+    height: 6vh;
+    padding-left: 1rem;
+    border-radius: 10px;
+    border: none;
+    padding-right: 3rem;
+  }
+  .ip-input:focus {
+    outline: none;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sub-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 6.5vh;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -2.6rem;
+    cursor: pointer;
+    border: none;
+  }
+  .details {
+    width: 70vw;
+    height: 7rem;
+    background-color: white;
+    color: gray;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0 1rem 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    top: 9rem;
+    z-index: 9999 !important;
+  }
 
-.ip, .loc, .timezone, .isp{
-  display: flex;
-  flex-direction: column;
-}
-.ip p, .loc p, .timezone p, .isp p{
-  color: black;
-  font-size: 1.2rem;
-}
+  .ip,
+  .loc,
+  .timezone,
+  .isp {
+    display: flex;
+    flex-direction: column;
+  }
+  .ip p,
+  .loc p,
+  .timezone p,
+  .isp p {
+    color: black;
+    font-size: 1.2rem;
+  }
 
-#mapid{
-  height: 70vh;
-  width: 100vw;
+  #mapid {
+    height: 70vh;
+    width: 100vw;
+  }
 }
-
+@media only screen and (max-width: 549px){
+  .header {
+    padding: 0;
+    margin: 0;
+    height: 30vh;
+    background-image: url(images/pattern-bg.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  .header h1 {
+    font-weight: 400;
+    position: relative;
+  }
+  .ip-input {
+    width: 30vw;
+    height: 6vh;
+    padding-left: 1rem;
+    border-radius: 10px;
+    border: none;
+    padding-right: 3rem;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sub-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 6.5vh;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -2.6rem;
+    cursor: pointer;
+    border: none;
+  }
+  .details{
+    width: 70vw;
+    height: 39vh;
+    margin-top: 1rem;
+    padding: .5rem 2rem 1rem 2rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    z-index: 999;
+  }
+  .details h5{
+    margin: 1rem 0 0 0;
+    color:gray ;
+    text-align: center;
+    font-size: .7rem;
+  }
+  .details p{
+    font-size: 1rem;
+    color: black;
+    text-align: center;
+    margin: .5rem 0 0 0;
+  }
+  #mapid{
+    width: 100vw;
+    height: 70vh;
+  }
+}
 
 /* Default styles */
 .attribution {
-    font-size: 11px;
-    text-align: center;
-  }
-  .attribution a {
-    color: hsl(228, 45%, 44%);
-  }
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
