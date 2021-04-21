@@ -7,6 +7,11 @@ const locShow = document.querySelector(".loc-show");
 const timeZone = document.querySelector(".timezone-show");
 const isp = document.querySelector(".isp-show");
 
+const blackIcon = L.icon({
+  iconUrl: "images/icon-location.svg", 
+  iconSize: [38, 50], // size of the icon
+});
+
 // Geo Ipify
 const request = function (ip) {
   fetch(
@@ -45,7 +50,7 @@ const request = function (ip) {
             "pk.eyJ1IjoiZGVhdGhtYXN0ZXIiLCJhIjoiY2tub3VkN2QzMTJtZDJwbGllMTE5dm90byJ9.mS__HI0AuLxvdsT0TSlonA",
         }
       ).addTo(myMap);
-      L.marker(coords).addTo(myMap);
+      L.marker(coords, {icon:blackIcon}).addTo(myMap);
     });
 };
 
